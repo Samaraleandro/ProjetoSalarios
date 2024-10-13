@@ -11,29 +11,27 @@
     <h1>Lista de Pessoas</h1>
 
     <h:form>
-        <p:dataTable var="pessoa" value="#{salarioConsolidadoBean.listaPessoas}" paginator="true" rows="10">
+        <p:dataTable var="pessoaSalario" value="#{salarioConsolidadoBean.listaPessoasSalarios}" paginator="true" rows="10" emptyMessage="Nenhum resultado encontrado">
 
-            <p:column headerText="ID">
-                <h:outputText value="#{pessoa.id}" />
+            <p:column headerText="ID da pessoa">
+                <h:outputText value="#{pessoaSalario.pessoa.id}" />
             </p:column>
 
-            <p:column headerText="Nome">
-                <h:outputText value="#{pessoa.nome}" />
+            <p:column headerText="Nome da pessoa">
+                <h:outputText value="#{pessoaSalario.pessoa.nome}" />
             </p:column>
 
-            <p:column headerText="Cidade">
-                <h:outputText value="#{pessoa.cidade}" />
+            <p:column headerText="Nome do cargo">
+                <h:outputText value="#{pessoaSalario.cargo.nome}" />
             </p:column>
 
-            <p:column headerText="Email">
-                <h:outputText value="#{pessoa.email}" />
-            </p:column>
-
-            <p:column headerText="Cargo ID">
-                <h:outputText value="#{pessoa.cargoId}" />
+            <p:column headerText="Salário da pessoa">
+                <h:outputText value="#{pessoaSalario.salario}" />
             </p:column>
 
         </p:dataTable>
+        
+        <h:commandButton value="Calcular Salários" action="#{salarioConsolidadoBean.calcularSalarios}"/>
     </h:form>
 </h:body>
 </html>
