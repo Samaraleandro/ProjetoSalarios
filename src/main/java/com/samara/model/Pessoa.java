@@ -118,4 +118,11 @@ public class Pessoa {
     public void setCargo(Cargo cargo) {
         this.cargo = cargo;
     }
+
+	@Override
+	public String toString() {
+		return "Pessoa [id=" + id + ", nome=" + nome + ", cidade=" + cidade + ", email=" + email + ", cep=" + cep
+				+ ", endereco=" + endereco + ", pais=" + pais + ", usuario=" + usuario + ", telefone=" + telefone
+				+ ", dataNascimento=" + dataNascimento + ", cargo=" + cargo + "]";
+	}
 }

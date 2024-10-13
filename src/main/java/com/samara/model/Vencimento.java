@@ -47,4 +47,9 @@ public class Vencimento {
     public void setValor(Double valor) {
         this.valor = valor;
     }
+
+	@Override
+	public String toString() {
+		return "Vencimento [id=" + id + ", descricao=" + descricao + ", tipo=" + tipo + ", valor=" + valor + "]";
+	}
 }

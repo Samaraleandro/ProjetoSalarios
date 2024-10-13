@@ -26,4 +26,9 @@ public class Cargo {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+	@Override
+	public String toString() {
+		return "Cargo [id=" + id + ", nome=" + nome + "]";
+	} 
 }

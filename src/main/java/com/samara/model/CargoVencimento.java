@@ -36,4 +36,9 @@ public class CargoVencimento {
     public void setVencimento(Vencimento vencimento) {
         this.vencimento = vencimento;
     }
+
+	@Override
+	public String toString() {
+		return "CargoVencimento [id=" + id + ", cargo=" + cargo + ", vencimento=" + vencimento + "]";
+	}
 }
