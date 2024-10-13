@@ -10,11 +10,22 @@ import com.samara.util.Conexao;
 public class SalarioCalculo {
 	
 	public void calcularSalarios() {
-		String selectSQL = "SELECT p.id AS pessoa_id, " + "p.nome AS nome_pessoa, " + "c.nome AS nome_cargo, "
-				+ "COALESCE(SUM(CASE WHEN v.tipo = 'CREDITO' THEN v.valor END), 0) - "
-				+ "COALESCE(SUM(CASE WHEN v.tipo = 'DEBITO' THEN v.valor END), 0) AS salario " + "FROM pessoa p "
-				+ "JOIN cargo c ON p.cargo_id = c.id " + "LEFT JOIN vencimentos v ON true " 																						
-				+ "GROUP BY p.id, p.nome, c.nome";
+		String selectSQL = "SELECT\n"
+				+ "    p.id AS pessoa_id,\n"
+				+ "    p.nome AS nome_pessoa,\n"
+				+ "    c.nome AS nome_cargo,\n"
+				+ "    COALESCE(SUM(CASE WHEN v.tipo = 'CREDITO' THEN v.valor END), 0) -\n"
+				+ "    COALESCE(SUM(CASE WHEN v.tipo = 'DEBITO' THEN v.valor END), 0) AS salario\n"
+				+ "FROM\n"
+				+ "    pessoa p\n"
+				+ "JOIN\n"
+				+ "    cargo c ON p.cargo_id = c.id\n"
+				+ "JOIN\n"
+				+ "    cargo_vencimentos cv ON c.id = cv.cargo_id\n"
+				+ "JOIN\n"
+				+ "    vencimentos v ON cv.vencimento_id = v.id\n"
+				+ "GROUP BY\n"
+				+ "    p.id, p.nome, c.nome;";
 
 		String insertSQL = "INSERT INTO pessoa_salario_consolidado (pessoa_id, nome_pessoa, nome_cargo, salario) "
 				+ "VALUES (?, ?, ?, ?)";
